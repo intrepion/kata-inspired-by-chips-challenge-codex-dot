@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-Open http://127.0.0.1:5183. Port 5183 is strict; occupied ports fail rather than taking a neighbor's port. The server binds only to this Mac. The delivered server runs in an ordinary Terminal window; it continues while that Terminal process and Mac session remain alive. Closing it, signing out or rebooting stops it. Restart with `npm run dev`; no boot/login startup or system configuration is installed.
+Open http://127.0.0.1:5183. Port 5183 is strict; occupied ports fail rather than taking a neighbor's port. The server binds only to this Mac. The delivered server runs as a detached Node process for this Mac session, launched through the supported shell tool. It survives completion of this task; stopping the process or rebooting ends it. Current PID is recorded in /tmp/lantern-vault-vite.pid and output in /tmp/lantern-vault-vite.log. A manually restarted `npm run dev` runs in your terminal until Ctrl+C. Restart with `npm run dev`; no boot/login startup or system configuration is installed.
 
 Arrow keys / WASD move. Click a neighboring tile or use the D-pad. U undoes an entire turn; R restarts. Field guide explains every tile. Chambers unlock in order; completion, best moves and mute save on this browser/device. In-progress boards do not survive reload. Chambers → Reset expedition progress clears local campaign progress. Reduced-motion system preferences are respected.
 
