@@ -9,3 +9,5 @@ One P2: rebuilding the UI restored data-action controls but not data-dir control
 One P1: stage 8 could win without moving its lower crate because the east channels connected. Fixed by separating east regions with a wall row. New BFS necessity test removes each starting crate in turn and proves neither modified stage can win. Revised successful route replays through public commands and normal Chrome arrow keys.
 
 Both axes found no other material violations. See verification for validation after repairs.
+
+Reviewers rechecked 771a696 and confirmed both findings closed, with no remaining material issues. An additional final-vault bypass check tightened mandatory fire protection and added a reachability regression test.

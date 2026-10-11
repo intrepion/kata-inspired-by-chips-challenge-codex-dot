@@ -1,7 +1,7 @@
 # Verification — 2026-10-11
 
 ## Automated
-22 tests pass through public engine/session/save seams: single-use seeds, required-gate seeds, colored door consumption, no negative keys, crate bridges/extinguishing, blocked/chain/item/ice/current pushes, water/fire protection and loss, forced motion direction/block termination/cycle detection, anchor/cleats, atomic undo restoring terrain/inventory/death, full restart, unknown-tile rejection, save corruption and bounds. Nine campaign solution routes replay and reset. Stage 8 requires both crates (exhaustive reachable-state searches with either removed).
+23 tests pass through public engine/session/save seams: single-use seeds, required-gate seeds, colored door consumption, no negative keys, crate bridges/extinguishing, blocked/chain/item/ice/current pushes, water/fire protection and loss, forced motion direction/block termination/cycle detection, anchor/cleats, atomic undo restoring terrain/inventory/death, full restart, unknown-tile rejection, save corruption and bounds. Nine campaign solution routes replay and reset. Stage 8 requires both crates (exhaustive reachable-state searches with either removed). The final vault requires ember protection (no win reachable with boots removed); its seed placement and east fire bottleneck were tightened after an additional route check. All nine stages were visibly replayed again after that change.
 
 Strict typecheck and production build pass. npm audit reports zero vulnerabilities. Initial test invocation used tsx CLI and hit sandbox IPC restrictions; scripts use Node --import tsx directly. No security changes.
 
