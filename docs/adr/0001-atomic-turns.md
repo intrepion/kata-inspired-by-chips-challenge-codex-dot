@@ -1,0 +1,2 @@
+# Atomic turns and full recovery
+The campaign uses deterministic command-driven turns with no clock or moving enemies. Ice/conveyors resolve within a single undoable turn, making the same route work across touch, keyboard and varying frame rates. Full snapshot undo trades a little memory for exact recovery of terrain, consumed items and death; cycle detection turns forced loops into recoverable loss.

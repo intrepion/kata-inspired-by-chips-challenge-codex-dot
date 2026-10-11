@@ -1,0 +1,26 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {createGame,move} from '../src/engine.js';
+test('gate requires all seeds and collection is single use',()=>{
+ let s=createGame(['#######','#@*..E#','#######']);
+ s=move(s,'right'); assert.equal(s.remaining,0);
+ s=move(s,'left'); s=move(s,'right'); assert.equal(s.remaining,0);
+ for(let i=0;i<3;i++)s=move(s,'right'); assert.equal(s.status,'won');
+});
+test('matching doors consume one key and persist as floor',()=>{let s=createGame(['########','#@rR*bE#','########']);s=move(move(s,'right'),'right');assert.equal(s.keys.r,0);assert.equal(s.tiles[11],'.');s=move(s,'right');assert.equal(s.remaining,0);});
+test('crate bridges water; blocked pushes do not consume turns',()=>{let s=createGame(['########','#@O~*E##','########']);s=move(s,'right');assert.equal(s.tiles[11],'.');assert.equal(s.player,10);s=move(s,'right');assert.equal(s.status,'playing');const blocked=createGame(['#####','#@OO#','#####']);assert.strictEqual(move(blocked,'right'),blocked);});
+import {Session,parseProgress} from '../src/engine.js';
+import {levels} from '../src/levels.js';
+import {readFileSync} from 'node:fs';
+const directions:Record<string,import('../src/engine.js').Direction>={U:'up',D:'down',L:'left',R:'right'};
+const solutions:string[]=JSON.parse(readFileSync(new URL('../src/solutions.json',import.meta.url),'utf8'));
+for(const [index,l] of levels.entries())test(`campaign ${index+1}: ${l.name} public-command solution and reset`,()=>{const game=new Session(l.rows);for(const d of solutions[index])game.command(directions[d]);assert.equal(game.state.status,'won');assert.equal(game.state.remaining,0);assert.ok(game.state.keys.r>=0&&game.state.keys.b>=0);assert.strictEqual(game.command('right'),game.state);game.undo();assert.equal(game.state.status,'playing');game.restart();assert.deepEqual(game.state,createGame(l.rows));assert.equal(game.history.length,0);});
+test('locked gate rejects premature victory; keyless doors block',()=>{const s=createGame(['#######','#@ER*.#','#######']);const n=move(s,'right');assert.equal(n.status,'playing');assert.equal(n.remaining,1);assert.strictEqual(move(n,'right'),n);});
+test('matching equipment protects water/fire, stage reset removes it',()=>{for(const [gear,hazard] of [['F','f'],['W','~']]){const game=new Session([`######`,`#@${gear}${hazard}E#`,`######`]);game.command('right');game.command('right');assert.equal(game.state.status,'playing');game.command('right');assert.equal(game.state.status,'won');game.restart();assert.deepEqual(game.state.gear,[]);}});
+test('lethal hazards are recoverable by undo',()=>{for(const hazard of ['f','~']){const game=new Session(['#####',`#@${hazard}E#`,'#####']);const before=game.state;game.command('right');assert.equal(game.state.status,'lost');assert.strictEqual(game.command('right'),game.state);assert.deepEqual(game.undo(),before);}});
+test('ice forced motion is atomic, wall stops sliding, cleats stop forcing',()=>{const game=new Session(['########','#@iii*.#','########']);game.command('right');assert.equal(game.state.player,13);assert.equal(game.state.moves,1);assert.equal(game.state.remaining,0);game.undo();assert.equal(game.state.remaining,1);let s=createGame(['#######','#@CiiE#','#######']);s=move(move(s,'right'),'right');assert.equal(s.player,10);const wall=move(createGame(['######','#@ii##','######']),'right');assert.equal(wall.player,9);});
+test('currents change direction, magnets suppress, forced loops terminate',()=>{let s=createGame(['#######','#@>v###','###>E##','#######']);s=move(move(s,'right'),'right');assert.equal(s.status,'won');const loop=move(createGame(['######','#@>v##','##^<##','######']),'right');assert.equal(loop.status,'lost');assert.equal(loop.moves,1);let anchored=createGame(['######','#@M<E#','######']);anchored=move(move(anchored,'right'),'right');assert.equal(anchored.player,9);});
+test('crate extinguishes fire; cannot push onto item, wall or another crate',()=>{let s=createGame(['#######','#@Of*E#','#######']);s=move(s,'right');assert.equal(s.tiles[10],'.');for(const target of ['*','r','E','i','>','#','O']){const original=createGame(['######',`#@O${target}.#`,'######']);assert.strictEqual(move(original,'right'),original);}});
+test('undo restores key, door, equipment and pushed terrain exactly',()=>{const game=new Session(['########','#@rRO~E#','########']);game.command('right');const withKey=structuredClone(game.state);game.command('right');game.command('right');game.undo();game.undo();assert.deepEqual(game.state,withKey);});
+test('save validation rejects corrupted shapes and bounds inventory progress',()=>{assert.deepEqual(parseProgress('{',9).completed,[]);assert.deepEqual(parseProgress('{"version":2,"completed":[0]}',9).completed,[]);const p=parseProgress(JSON.stringify({version:1,completed:[0,0,-1,8,9,'1',1.2],best:{0:4,8:-1},mute:'yes'}),9);assert.deepEqual(p.completed,[0,8]);assert.deepEqual(p.best,{'0':4});assert.equal(p.mute,false);});
+test('stage loader rejects unknown tiles before gameplay',()=>{assert.throws(()=>createGame(['#####','#@?E#','#####']),/Invalid stage/);});
