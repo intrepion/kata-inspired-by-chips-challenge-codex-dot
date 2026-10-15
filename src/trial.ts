@@ -1,0 +1,45 @@
+import type {LiveOptions} from './realtime';
+import type {Level} from './levels';
+
+// Original 32×32 sample; campaign indices, terrain and save data stay separate.
+export const timingTrial:Level&LiveOptions={
+ name:'The patient pursuit',subtitle:'Watch, lure, then cross',
+ hint:'Explore the safe western room and collect its seed. Follow the east corridor beside the Fangling gallery. Lure it east onto the brown plate below the holding trap; while you wait in the trap, face right. Take the red key in the northeast room, then its south door. The broad courtyard has an orb patrol: watch from a different row, collect both seeds, then reach the southeast gate. Gravel keeps creatures out.',
+ rows:[
+  '################################',
+  '#.........######################',
+  '#.........######################',
+  '#.....*...######################',
+  '#.@.......######################',
+  '#..ggg....###########.....r..###',
+  '#.........###########........###',
+  '#.........###########........###',
+  '#..................T.........###',
+  '#####################........###',
+  '########...........p#........###',
+  '#####################........###',
+  '#####################........###',
+  '##########################R#####',
+  '##########################.#####',
+  '##########################.#####',
+  '################..............##',
+  '################.............*##',
+  '################..............##',
+  '################..............##',
+  '################..............##',
+  '################..............##',
+  '################..............##',
+  '################..............##',
+  '################..............##',
+  '################..............##',
+  '################..............##',
+  '################.*............##',
+  '################............E.##',
+  '################################',
+  '################################',
+  '################################',
+ ],
+ timeLimit:90,
+ creatures:[{kind:'teeth',position:329,direction:'left'},{kind:'orb',position:726,direction:'left'}],
+ traps:[{position:275,button:339}]
+};

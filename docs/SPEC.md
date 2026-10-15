@@ -1,3 +1,7 @@
+# Historical nine-chamber practice specification
+
+The requirements below describe the preserved v1 practice campaign. Current real-time slice requirements are in [REALTIME-SPEC.md](REALTIME-SPEC.md); its held controls also serve practice while retaining atomic turns and scores.
+
 # Lantern Vault acceptance criteria
 An original nine-stage puzzle expedition starring courier Pip, recovering light seeds from a flooded mountain archive. No commercial art, names, sound or level layouts. All art is CSS and Unicode, audio is synthesized locally.
 

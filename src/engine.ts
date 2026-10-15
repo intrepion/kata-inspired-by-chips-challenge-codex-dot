@@ -1,12 +1,13 @@
 export type Direction='up'|'down'|'left'|'right';
 export const vectors:Record<Direction,[number,number]>={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]};
+export const forcedDirections:Record<string,Direction>={'^':'up','v':'down','<':'left','>':'right'};
 export interface Game {tiles:string[];width:number;height:number;player:number;remaining:number;keys:{r:number;b:number};gear:string[];status:'playing'|'won'|'lost';moves:number;message:string}
 export function createGame(rows:string[]):Game {
- if(rows.join('').split('').some(t=>!'#.@*ErbRBO~fFWCMi<>^v'.includes(t))||!rows.length||rows.some(r=>r.length!==rows[0].length)||rows.join('').split('@').length!==2)throw Error('Invalid stage');
+ if(rows.join('').split('').some(t=>!'#.@*ErbRBO~fFWCMi<>^vpTg'.includes(t))||!rows.length||rows.some(r=>r.length!==rows[0].length)||rows.join('').split('@').length!==2)throw Error('Invalid stage');
  const tiles=rows.join('').split('');const player=tiles.indexOf('@');tiles[player]='.';
  return {tiles,width:rows[0].length,height:rows.length,player,remaining:tiles.filter(t=>t==='*').length,keys:{r:0,b:0},gear:[],status:'playing',moves:0,message:'Recover every light seed, then reach the gate.'};
 }
-export function move(input:Game,direction:Direction):Game {
+export function move(input:Game,direction:Direction,followForces=true):Game {
  if(input.status!=='playing')return input;
  const s=structuredClone(input);let dir=direction;let entered=false;const seen=new Set<string>();
  while(s.status==='playing'){
@@ -28,7 +29,8 @@ export function move(input:Game,direction:Direction):Game {
   if(['F','W','C','M'].includes(tile)){if(!s.gear.includes(tile))s.gear.push(tile);s.tiles[next]='.';s.message='Equipment collected for this stage.';}
   if((tile==='~'&&!s.gear.includes('W'))||(tile==='f'&&!s.gear.includes('F'))){s.status='lost';s.message=tile==='~'?'Deep water! Undo or restart to recover.':'Too hot! Find ember boots. Undo to recover.';break;}
   if(tile==='E'){if(s.remaining===0){s.status='won';s.message='Chamber restored. The archive grows brighter.';}else s.message=`Gate needs ${s.remaining} more light seed${s.remaining===1?'':'s'}.`;}
-  const forced:Record<string,Direction>={'^':'up','v':'down','<':'left','>':'right'};
+  if(!followForces)break;
+  const forced=forcedDirections;
   if(tile==='i'&&!s.gear.includes('C')){/* keep entry direction */}
   else if(forced[tile]&&!s.gear.includes('M'))dir=forced[tile];
   else break;

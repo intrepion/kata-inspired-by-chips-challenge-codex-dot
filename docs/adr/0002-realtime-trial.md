@@ -1,0 +1,7 @@
+# A reusable timed actor loop alongside preserved practice
+
+The audit found that atomic turns remove the navigation/timing skill of Chip's Challenge. Use fixed50ms ticks, ordinary four-tick movement, two-tick unprotected sliding, autonomous forward/reverse orbs and occupancy-controlled linked traps. This is a simulator-informed default, not exact emulation of every historical port.
+
+Preserve all nine practice layouts, atomic undo/scoring and v1 progress. The original timing trial is a separately selectable slice with no time-rewinding Undo or campaign save writes; this proves the new foundation before retuning the campaign. Timer expiry precedes actors, creatures update in authored order before Pip, and an open trap releases a ready occupant in its facing direction. Menus/focus interruptions freeze and clear input, and resuming requires a fresh press. These deterministic choices avoid silent frame catch-up and keep timing outcomes testable.
+
+Baseline: [publisher-hosted original manual](https://cdn.steamstatic.com/steam/apps/1402520/manuals/Chip_s_Challenge.pdf?t=1599518905) supports clock pressure, patterned monsters, traps and pause; [Lexy's Labyrinth definitions](https://github.com/eevee/lexys-labyrinth/blob/master/js/defs.js), [tile types](https://github.com/eevee/lexys-labyrinth/blob/master/js/tiletypes.js) corroborate20 tics/second, four-tic actor movement, half-duration sliding and forward/reverse balls. The fan simulator is strong technical corroboration, not a commercial-runtime measurement.
