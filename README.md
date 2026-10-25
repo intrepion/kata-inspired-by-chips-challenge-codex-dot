@@ -49,3 +49,7 @@ The original Tile World author's [MS engine](https://github.com/BR903/tworld/blo
 Current local verification: 53 tests, typecheck, build and all nine solver routes pass. Chrome completed the full-speed trial in 82 steps with 66 seconds remaining; practice step/Undo and campaign progress were preserved.
 
 Read [pursuit criteria](docs/PURSUIT-SPEC.md), [real-time criteria](docs/REALTIME-SPEC.md), [verification](docs/VERIFICATION.md) and the local follow-up report at /Users/intrepion/Documents/Codex/2026-10-14/task/chips-wrap-up/delivery-report.md. That report records the publication commit, exact CI results and remaining native focus/device limitations.
+
+## Play online
+
+[Play the hosted game](https://intrepion.github.io/kata-inspired-by-chips-challenge-codex-dot/)
