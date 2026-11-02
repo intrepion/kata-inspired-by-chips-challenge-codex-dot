@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "gameId": "kata-inspired-by-chips-challenge-codex-dot",
+  "playUrl": "https://intrepion.github.io/kata-inspired-by-chips-challenge-codex-dot/",
+  "screenshots": [
+    {
+      "path": "arcade/screenshots/view-01.jpg",
+      "sha256": "63e850ed7bfd029060a4e6098b601ffb1078b4c58f25c7a8e50f61529c4abec7",
+      "alt": "Gameplay capture 1",
+      "provenance": {
+        "kind": "existing_repository_capture",
+        "sourcePath": "docs/screenshots/desktop.jpg",
+        "deployedBuild": null,
+        "captureDate": null
+      }
+    }
+  ]
+}

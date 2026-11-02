@@ -53,3 +53,7 @@ Read [pursuit criteria](docs/PURSUIT-SPEC.md), [real-time criteria](docs/REALTIM
 ## Play online
 
 [Play the hosted game](https://intrepion.github.io/kata-inspired-by-chips-challenge-codex-dot/)
+
+## Arcade metadata
+
+See [docs/arcade-metadata.md](docs/arcade-metadata.md) for the game-owned manifest and screenshot provenance.
