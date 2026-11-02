@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "workflowCommit": "63e010948cc0155983d32921beb6c2804d3b84dd",
+  "sourceCommit": "f43dc26fb49f7aaf1d0ef567963d7ccaa55b3c44",
+  "runId": "41408691670",
+  "url": "http://127.0.0.1:4230/",
+  "inputs": {
+    "index.html": "4750ab9ff2accde0ce009002f0792508fbfa6059ca1fc67b02b37552bf92adfc",
+    "assets/index-BIdJW7l9.css": "291f766dbeb6e341ec2e5ff7fd8aec9983be9fbf0c415875c9a8d8d95496fb6f",
+    "assets/index-C4hB1drd.js": "ba0716fe8282c6a428c0f9cd50e2bb645b517137f4350dcb41d9634c46d03b3c"
+  },
+  "browser": "153.0.8010.12",
+  "viewport": {
+    "width": 1280,
+    "height": 1000
+  },
+  "screenshots": [
+    "lantern-vault-01.png",
+    "lantern-vault-02.png"
+  ]
+}

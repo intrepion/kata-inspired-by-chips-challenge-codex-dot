@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "gameId": "kata-inspired-by-chips-challenge-codex-dot",
   "playUrl": "https://intrepion.github.io/kata-inspired-by-chips-challenge-codex-dot/",
   "screenshots": [
@@ -12,6 +12,46 @@
         "sourcePath": "docs/screenshots/desktop.jpg",
         "deployedBuild": null,
         "captureDate": null
+      }
+    },
+    {
+      "path": "arcade/screenshots/ci-20261102-01.jpg",
+      "sha256": "20b4171acb459c2f9166d9abfe5bcabf5239f28f606f2ed5b90cf3470add8646",
+      "alt": "Lantern Vault gameplay, view 1",
+      "provenance": {
+        "kind": "ci_gameplay_capture",
+        "sourcePath": "arcade/capture-evidence/ci-20261102-01.png",
+        "sourceSha256": "ddab5cb5d57e5d58cb02b366ab6e254d9752835767f85edef029140550e63721",
+        "captureCommit": "f43dc26fb49f7aaf1d0ef567963d7ccaa55b3c44",
+        "workflowRunId": "41408691670",
+        "inputHashes": {
+          "index.html": "4750ab9ff2accde0ce009002f0792508fbfa6059ca1fc67b02b37552bf92adfc",
+          "assets/index-BIdJW7l9.css": "291f766dbeb6e341ec2e5ff7fd8aec9983be9fbf0c415875c9a8d8d95496fb6f",
+          "assets/index-C4hB1drd.js": "ba0716fe8282c6a428c0f9cd50e2bb645b517137f4350dcb41d9634c46d03b3c"
+        },
+        "publishedFilesVerifiedAt": "2026-11-02T19:01:20Z",
+        "captureRecordPath": "arcade/capture-evidence/ci-20261102-record.json",
+        "captureRecordSha256": "12305f490ffbff2f0156c52311c3e06eb9343fe54e3a56481dc583430321b3da"
+      }
+    },
+    {
+      "path": "arcade/screenshots/ci-20261102-02.jpg",
+      "sha256": "f0d5b80ec67f0f1ecab9dc49996af7430ef140868089926b363c288377e5269d",
+      "alt": "Lantern Vault gameplay, view 2",
+      "provenance": {
+        "kind": "ci_gameplay_capture",
+        "sourcePath": "arcade/capture-evidence/ci-20261102-02.png",
+        "sourceSha256": "c453956968f3520652b8948d7ecd09904ac4cce571171cbb5d3552da1c0202b9",
+        "captureCommit": "f43dc26fb49f7aaf1d0ef567963d7ccaa55b3c44",
+        "workflowRunId": "41408691670",
+        "inputHashes": {
+          "index.html": "4750ab9ff2accde0ce009002f0792508fbfa6059ca1fc67b02b37552bf92adfc",
+          "assets/index-BIdJW7l9.css": "291f766dbeb6e341ec2e5ff7fd8aec9983be9fbf0c415875c9a8d8d95496fb6f",
+          "assets/index-C4hB1drd.js": "ba0716fe8282c6a428c0f9cd50e2bb645b517137f4350dcb41d9634c46d03b3c"
+        },
+        "publishedFilesVerifiedAt": "2026-11-02T19:01:20Z",
+        "captureRecordPath": "arcade/capture-evidence/ci-20261102-record.json",
+        "captureRecordSha256": "12305f490ffbff2f0156c52311c3e06eb9343fe54e3a56481dc583430321b3da"
       }
     }
   ]
