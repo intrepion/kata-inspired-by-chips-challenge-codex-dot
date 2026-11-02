@@ -28,7 +28,7 @@ jobs:
         env:
           CAPTURE_OUTPUT: capture-output
         run: |
-          export GAME_SOURCE_COMMIT="$(git rev-parse HEAD^)"
+          export GAME_SOURCE_COMMIT="f43dc26fb49f7aaf1d0ef567963d7ccaa55b3c44"
           python3 -m http.server 4230 --bind 127.0.0.1 --directory capture-site > /tmp/lantern-vault-http.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
